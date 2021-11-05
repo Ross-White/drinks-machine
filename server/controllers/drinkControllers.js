@@ -18,4 +18,8 @@ const sellDrinkController = async (req, res) => {
     res.json(updatedDrink)
 }
 
-module.exports = { sellDrinkController, getDrinkController };
+const resetDrinksController = async (req, res) => {
+    res.json(await Drink.updateMany({ quantity: 10 }, { new: true }));
+}
+
+module.exports = { sellDrinkController, getDrinkController, resetDrinksController };

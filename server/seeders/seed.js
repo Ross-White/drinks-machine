@@ -1,14 +1,14 @@
 const db = require('../config/connection');
-const { Coin, Drink } = require('../models');
-const coinSeeds = require('./coinSeeds.json');
+const { Drink, Money } = require('../models');
+const moneySeeds = require('./moneySeed.json');
 const drinkSeeds = require('./drinkSeeds');
 
 db.once('open', async () => {
   try {
-    await Coin.deleteMany({});
+    await Money.deleteOne({});
     await Drink.deleteMany({});
 
-    await Coin.create(coinSeeds);
+    await Money.create(moneySeeds);
     await Drink.create(drinkSeeds);
 
   } catch (err) {

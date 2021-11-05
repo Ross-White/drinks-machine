@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const drinksRoutes = require('./drinks-routes');
-const coinRoutes = require('./coin-routes')
+const moneyRoutes = require('./money-routes')
 
 router.use('/drinks', drinksRoutes);
-router.use('./coins', coinRoutes)
+router.use('/money', moneyRoutes)
 
 module.exports = router;

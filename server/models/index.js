@@ -1,4 +1,4 @@
 const Drink = require('./Drinks');
-const Coin = require('./Coins')
+const Money = require('./Money')
 
-module.exports = { Drink, Coin };
+module.exports = { Drink, Money };

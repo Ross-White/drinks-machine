@@ -9,8 +9,13 @@ const getDrinkController = async (req, res) => {
     res.json(drink)
 }
 
-const sellDrinkController = async ({ body, params }) => {
-    return await db.Drink.findByIdAndUpdate(params.id,{ value : body })
+const sellDrinkController = async (req, res) => {
+    const drink = await Drink.findOne({name: req.body.name});
+    const updatedDrink = await Drink.findOneAndUpdate({name: req.body.name}, { quantity: drink.quantity - 1 }, { new: true });
+    if (!updatedDrink) {
+        return res.status(400).json({ message: 'Cannot find drink' });
+    }
+    res.json(updatedDrink)
 }
 
 module.exports = { sellDrinkController, getDrinkController };

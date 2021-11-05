@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Coke",
+        "price": 0.55,
+        "quantity": 10
+    },
+    {
+        "name": "Tango",
+        "price": 0.35,
+        "quantity": 10
+    },
+    {
+        "name": "Water",
+        "price": 0.45,
+        "quantity": 10
+    }
+]

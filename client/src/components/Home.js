@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import { getAllDrinks, sellDrink, resetDrinks, addMoney, resetMoney } from '../api';
 import { useQuery } from '@apollo/client';
 import { QUERY_DRINKS, QUERY_MONEY }  from '../utils/queries';
+import { SELL_DRINK, RESET_DRINKS, ADD_MONEY, RESET_MONEY } from '../utils/mutations';
 
 import Coin from './coins';
 import Drink from './drinks'
@@ -10,9 +10,17 @@ import coins from '../coins.json';
 
 export default function Home() {
 
-    const { data } = useQuery(QUERY_DRINKS);
-    const drinks = data.drinks;
-    console.log('DRINKS::', data.drinks);
+    const [moneyAdded, setMoneyAdded] = useState(0);
+    const handleMoneyAdded = (event) => {
+        const { target } = event;
+        const inputValue = parseFloat(moneyAdded) + parseFloat(target.value);
+      setMoneyAdded(inputValue.toFixed(2))
+    }
+
+    const { loading, data } = useQuery(QUERY_DRINKS);
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div>
@@ -21,11 +29,15 @@ export default function Home() {
             <h1>Insert Coins</h1>
             <div className="coin-container">
                 {coins.coins.map((coins) => (
-                    <Coin name={coins.name} value={coins.value} />
+                    <Coin handleMoneyAdded={handleMoneyAdded} name={coins.name} value={coins.value} />
                 ))}
             </div>
+            <div>
+                <p>Total Added</p>
+                <p>{moneyAdded}</p>
+            </div>
             <div className="drinksContainer" >
-                    {drinks.map((drink) => (
+                    {data.drinks.map((drink) => (
                         <Drink name={drink.name} price={drink.price} />
                     ))}
             </div>

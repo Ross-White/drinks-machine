@@ -1,4 +1,5 @@
 import React from "react";
+import './drink.css';
 
 const Drink = (props) => {
     return (

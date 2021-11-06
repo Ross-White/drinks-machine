@@ -12,19 +12,26 @@ const resolvers ={
 
     Mutation: {
     //Updates the quantity of selected drink
-        sellDrink: async (parent, { name }) => {
+        sellDrink: async (parent, { name, price }) => {
         //Finds existing quantity of selected drink
         const drink = await Drink.findOne({name: name});
         //If quantity is 0, returns 'Sold Out' message
-        if (drink.quantity <= 0 ) {
-            return res.status(400).json({ message: 'Sold Out!' });
-        }
+        // if (drink.quantity <= 0 ) {
+        //     return res.status(400).json({ message: 'Sold Out!' });
+        // }
         //Updates quantity by -1
         const updatedDrink = await Drink.findOneAndUpdate(
             { name: name }, 
             { quantity: drink.quantity - 1 }, 
             { new: true });
-        return updatedDrink;
+        //Finds current total value of money
+        const total = await Money.findOne({ name: "total" });
+        //Increases by added amount
+        const updatedTotal = await Money.findOneAndUpdate(
+            { name: "total" }, 
+            { value: total.value + price }, 
+            { new: true });
+        return updatedTotal, updatedDrink;
         },
 
         //Resets all drinks quantities to default (10)
@@ -34,17 +41,17 @@ const resolvers ={
                 { new: true });
         },
 
-        //Increases total valuue of money by the amount spent on drink
-        addMoney: async (parent, { value }) => {
-            //Finds current total value of money
-            const total = await Money.findOne({ name: "total" });
-            //Increases by added amount
-            const updatedTotal = await Money.findOneAndUpdate(
-                { name: "total" }, 
-                { value: total.value + value }, 
-                { new: true });
-            return updatedTotal;
-        },
+        // //Increases total valuue of money by the amount spent on drink
+        // addMoney: async (parent, { value }) => {
+        //     //Finds current total value of money
+        //     const total = await Money.findOne({ name: "total" });
+        //     //Increases by added amount
+        //     const updatedTotal = await Money.findOneAndUpdate(
+        //         { name: "total" }, 
+        //         { value: total.value + value }, 
+        //         { new: true });
+        //     return updatedTotal;
+        // },
 
         //Resets value of money to zero
         resetMoney: async () => {

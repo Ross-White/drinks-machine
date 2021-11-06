@@ -1,14 +1,14 @@
 import { gql } from '@apollo/client';
 
 export const SELL_DRINK = gql`
-    mutation Mutation($name: String) {
-        sellDrink(name: $name) {
-            _id
+    mutation Mutation($name: String, $price: Float) {
+        sellDrink(name: $name, price: $price) {
             name
             price
             quantity
-  }
-}
+            _id
+        }
+    }
 `;
 
 export const RESET_DRINKS = gql`
@@ -18,18 +18,8 @@ export const RESET_DRINKS = gql`
             name
             price
             quantity
-    }
-}
-`;
-
-export const ADD_MONEY = gql`
-    mutation Mutation($value: Float) {
-        addMoney(value: $value) {
-            _id
-            name
-            value
         }
-}
+    }
 `;
 
 export const RESET_MONEY = gql`

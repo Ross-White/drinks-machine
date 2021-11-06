@@ -3,9 +3,14 @@ import './drink.css';
 
 const Drink = (props) => {
     return (
-      <button className="drink">
-          <h1>{props.name}</h1>
-          <h2>{props.price}</h2>
+      <button 
+      className="drink" 
+      onClick={props.handleSellDrink}
+      name={props.name}
+      value={props.price}
+      >
+        {props.name}
+        {props.price}
       </button>
     );
   }

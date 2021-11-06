@@ -8,6 +8,7 @@ const Drink = (props) => {
       onClick={props.handleSellDrink}
       name={props.name}
       value={props.price}
+      data-quantity={props.quantity}
       >
         {props.name}
         {props.price}

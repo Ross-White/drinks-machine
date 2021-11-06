@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_DRINKS, QUERY_MONEY } from '../utils/queries';
-import { SELL_DRINK, RESET_DRINKS, RESET_MONEY } from '../utils/mutations';
+import { QUERY_DRINKS } from '../utils/queries';
+import { SELL_DRINK, RESET } from '../utils/mutations';
 
 import Coin from './coins';
 import Drink from './drinks'
 import coins from '../coins.json';
-
 
 export default function Home() {
 
@@ -14,6 +13,7 @@ export default function Home() {
     const [change, setChange] = useState(0);
     const [purchasedDrink, setPurchasedDrink] = useState('');
     const [sellDrink] = useMutation(SELL_DRINK);
+    const [reset] = useMutation(RESET);
 
     const handleMoneyAdded = (event) => {
         const { target } = event;
@@ -23,9 +23,13 @@ export default function Home() {
 
     const handleSellDrink = (event) => {
         const { target } = event;
+        const quantity = target.getAttribute('data-quantity');
         if (moneyAdded < target.value) {
             alert('Not enough money!')
-        } else {
+        } else if (quantity <= 0 ) {
+            alert('This Item is Sold Out!')
+        }
+        else {
             sellDrink({
                 variables: {
                     "name": target.name,
@@ -38,16 +42,28 @@ export default function Home() {
         }
     };
 
+    const handleCancel =() => {
+        setChange(parseFloat(moneyAdded) + parseFloat(change));
+        setMoneyAdded(0);
+    };
+
     const handleTakeProducts = () => {
         setPurchasedDrink('');
         setChange(0);
     }
 
+    const handleReset = () => {
+        reset(
+            alert('Drinks stocks and taking reset!')
+        )
+    }
     const { loading, data } = useQuery(QUERY_DRINKS);
+    console.log(data)
     if (loading) {
         return <div>Loading...</div>;
+    } else if (!data) {
+        return 'This Sucks'
     }
-
     return (
         <div>
             <h1>Drink Machine</h1>
@@ -61,10 +77,11 @@ export default function Home() {
                 <div>
                     <p>Total Added</p>
                     <p>{moneyAdded}</p>
+                    <button onClick={handleCancel}>Cancel</button>
                 </div>
                 <div className="drinksContainer">
                     {data.drinks.map((drink) => (
-                        <Drink handleSellDrink={handleSellDrink} name={drink.name} price={drink.price} />
+                        <Drink handleSellDrink={handleSellDrink} name={drink.name} price={drink.price} quantity={drink.quantity}/>
                     ))}
                 </div>
                 <div>
@@ -72,6 +89,11 @@ export default function Home() {
                     <h2>{change}</h2>
                     <button onClick={handleTakeProducts}>
                         Click to take your drink and change
+                    </button>
+                </div>
+                <div>
+                    <button onClick={handleReset}>
+                        Reset
                     </button>
                 </div>
 

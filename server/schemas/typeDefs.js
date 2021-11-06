@@ -21,9 +21,9 @@ const typeDefs = gql`
 
   type Mutation {
     sellDrink(name: String, price: Float, quantity: Int): Drink
-    resetDrinks(name: String, price: Float, quantity: Int): Drink
-    addMoney(name: String, value: Float): Money
-    resetMoney(name: String, value: Float): Money  
+    reset(name: String, price: Float, quantity: Int): Drink
+    # addMoney(name: String, value: Float): Money
+    # resetMoney(name: String, value: Float): Money  
   }
 `;
 

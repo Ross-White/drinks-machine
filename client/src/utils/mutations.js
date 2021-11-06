@@ -11,9 +11,9 @@ export const SELL_DRINK = gql`
     }
 `;
 
-export const RESET_DRINKS = gql`
+export const RESET = gql`
     mutation Mutation {
-        resetDrinks {
+        reset {
             _id
             name
             price
@@ -22,12 +22,12 @@ export const RESET_DRINKS = gql`
     }
 `;
 
-export const RESET_MONEY = gql`
-    mutation Mutation {
-        resetMoney {
-            value
-            name
-            _id
-        }
-    }
-`;
+// export const RESET_MONEY = gql`
+//     mutation Mutation {
+//         resetMoney {
+//             value
+//             name
+//             _id
+//         }
+//     }
+// `;

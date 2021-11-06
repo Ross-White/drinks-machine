@@ -23,16 +23,25 @@ export default function Home() {
 
     const handleSellDrink = (event) => {
         const { target } = event;
-        sellDrink({
-            variables: {
-                "name": target.name,
-                "price": parseFloat(target.value)
-            }
-        });
-        setPurchasedDrink(target.name);
-        setChange(parseFloat(moneyAdded) - parseFloat(target.value));
-        setMoneyAdded(0);
+        if (moneyAdded < target.value) {
+            alert('Not enough money!')
+        } else {
+            sellDrink({
+                variables: {
+                    "name": target.name,
+                    "price": parseFloat(target.value)
+                }
+            });
+            setPurchasedDrink(target.name);
+            setChange(parseFloat((moneyAdded) - parseFloat(target.value)).toFixed(2));
+            setMoneyAdded(0);
+        }
     };
+
+    const handleTakeProducts = () => {
+        setPurchasedDrink('');
+        setChange(0);
+    }
 
     const { loading, data } = useQuery(QUERY_DRINKS);
     if (loading) {
@@ -61,6 +70,9 @@ export default function Home() {
                 <div>
                     <h1>{purchasedDrink}</h1>
                     <h2>{change}</h2>
+                    <button onClick={handleTakeProducts}>
+                        Click to take your drink and change
+                    </button>
                 </div>
 
             </div>

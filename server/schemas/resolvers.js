@@ -16,9 +16,9 @@ const resolvers ={
         //Finds existing quantity of selected drink
         const drink = await Drink.findOne({name: name});
         //If quantity is 0, returns 'Sold Out' message
-        // if (drink.quantity <= 0 ) {
-        //     return res.status(400).json({ message: 'Sold Out!' });
-        // }
+        if (drink.quantity <= 0 ) {
+            return ({ message: 'Sold Out!' });
+        }
         //Updates quantity by -1
         const updatedDrink = await Drink.findOneAndUpdate(
             { name: name }, 

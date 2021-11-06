@@ -20,3 +20,10 @@
 * Reset
     * returns all money taken
     * sets quantity of all drinks back to default
+
+# Operations
+
+* add coin
+* remove drink
+* return change
+* reset machine

@@ -51,7 +51,8 @@ export default function Home() {
             //Updates state of displayed elements
             setPurchasedDrink(target.name);
             setPurchasedDrinkImg(image);
-            setChange(parseFloat((moneyAdded) - parseFloat(target.value)).toFixed(2));
+            const returnedChange = (parseFloat((moneyAdded) - parseFloat(target.value))).toFixed(2);
+            setChange((parseFloat(change) + parseFloat(returnedChange)).toFixed(2));
             setMoneyAdded(0);
         }
     };

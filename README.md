@@ -1,3 +1,3 @@
 # Drink Machine
 
-A simple drink machine built using MongoDB, Express, React, Node
+A simple drink machine built using MongoDB, Express, React, Node. Developed for 

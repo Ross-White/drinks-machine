@@ -5,6 +5,7 @@
 * [Technology](#technology)
 * [Installation](#installation)
 * [Screenshot](#screenshot)
+* [Contact](#contact)
 
 ## Description
 
@@ -34,4 +35,12 @@ This application makes use of the following technology:
 
 Below is a scrrenshot of the application. The initial styling is basic due to time constraints.
 
-![Screenshot](docs\drink-machine-image.JPG)
+![Screenshot](./docs/drink-machine-image.JPG)
+
+## Contact
+
+This is all the work of myself. For any further information I can be contacted through the following means:
+
+* [GitHub](https://github.com/Ross-White)
+* [LinkedIn](https://www.linkedin.com/in/ross-white1/)
+* [Email](mailto:info@ross-white.co.uk)

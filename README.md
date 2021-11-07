@@ -33,7 +33,7 @@ This application makes use of the following technology:
 
 ## Screenshot
 
-Below is a scrrenshot of the application. The initial styling is basic due to time constraints.
+Below is a scrrenshot of the application. The basic styling using CSS.
 
 ![Screenshot](./docs/drink-machine-image.JPG)
 

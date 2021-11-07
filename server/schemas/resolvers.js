@@ -3,12 +3,14 @@ const { Drink, Money } = require('../models');
 
 const resolvers = {
     Query: {
+        //returns all drinks
         drinks: async () => {
             return await Drink.find({});
         },
-        // money: async () => {
-        //     return await Money.find({});
-        // }
+        //returns money data
+        money: async () => {
+            return await Money.find({});
+        }
     },
 
     Mutation: {

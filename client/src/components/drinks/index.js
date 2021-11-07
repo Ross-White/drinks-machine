@@ -1,19 +1,20 @@
 import React from "react";
-import './drink.css';
 
 const Drink = (props) => {
-    return (
-      <button 
-      className="drink" 
-      onClick={props.handleSellDrink}
-      name={props.name}
-      value={props.price}
-      data-quantity={props.quantity}
-      >
-        {props.name}
-        {props.price}
+  return (
+    <section className="single-drink">
+      <img className="drink-img" src={props.image}></img>
+      <button
+        className="btn"
+        onClick={props.handleSellDrink}
+        name={props.name}
+        value={props.price}
+        data-quantity={props.quantity}
+        data-img={props.image}>
+          {props.name}  £{props.price}
       </button>
-    );
-  }
-  
-  export default Drink;
+    </section>
+  );
+}
+
+export default Drink;

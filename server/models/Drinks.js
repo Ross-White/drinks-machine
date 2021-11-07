@@ -13,6 +13,9 @@ const drinkSchema = new Schema(
     quantity: {
       type: Number,
       min: [ 0, 'Sold Out']
+    },
+    image: {
+      type: String,
     } 
   }
 );

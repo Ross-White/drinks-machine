@@ -2,16 +2,19 @@
     {
         "name": "Coke",
         "price": 0.55,
-        "quantity": 10
+        "quantity": 10,
+        "image": "https://media.nisbets.com/asset/core/prodimage/largezoom/fw839_1.jpg"
     },
     {
         "name": "Tango",
         "price": 0.35,
-        "quantity": 10
+        "quantity": 10,
+        "image": "https://cdn.shopify.com/s/files/1/0364/4840/3515/products/Untitleddesign_14_e4057ca3-e619-4be8-980f-57642a22258c_900x.png?v=1597313650"
     },
     {
         "name": "Water",
         "price": 0.45,
-        "quantity": 10
+        "quantity": 10,
+        "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQuzdkrrs85bZY7BhamMxzNap3RGhyBAxjQZUffW_1fGicFv4thWFv4ZsqjlcTgtfYwExTPAiuHJft_2uuOYL6s4w3_VKB5&usqp=CAY"
     }
 ]

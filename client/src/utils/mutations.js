@@ -21,13 +21,3 @@ export const RESET = gql`
         }
     }
 `;
-
-// export const RESET_MONEY = gql`
-//     mutation Mutation {
-//         resetMoney {
-//             value
-//             name
-//             _id
-//         }
-//     }
-// `;

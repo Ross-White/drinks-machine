@@ -1,4 +1,3 @@
-import './coins.css';
 
 const Coin = (props) => {
   return (

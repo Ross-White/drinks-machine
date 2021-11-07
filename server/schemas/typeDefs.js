@@ -6,6 +6,8 @@ const typeDefs = gql`
     name: String
     price: Float
     quantity: Int
+    image: String
+    value: Float
   }
   type Money {
     _id: ID
@@ -22,8 +24,6 @@ const typeDefs = gql`
   type Mutation {
     sellDrink(name: String, price: Float, quantity: Int): Drink
     reset(name: String, price: Float, quantity: Int): Drink
-    # addMoney(name: String, value: Float): Money
-    # resetMoney(name: String, value: Float): Money  
   }
 `;
 

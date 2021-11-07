@@ -7,14 +7,14 @@ export const QUERY_DRINKS = gql`
             name
             price
             quantity
+            image
         }
-    }
+    },
 `;
 
 export const QUERY_MONEY = gql`
-    query Query {
+    query getMoney {
         money {
-            _id
             name
             value
         }
